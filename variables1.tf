@@ -89,21 +89,17 @@ variable "security_group_name" {
 variable "sg_ingress_rule" {
 
   description = "ingress rules of  security group"
-  type = list(object({
 
-    from_port  = number
-    to_port    = number
-    protocol   = string
-    cidr_block = string
+  type = map(any)
 
-  }))
-  default = [
-    {
 
-      from_port  = 22
-      to_port    = 22
-      protocol   = "tcp"
-      cidr_block = "0.0.0.0/0"
+  default = {
+
+
+      "from_port"  = "22"
+      "to_port"    = "22"
+      "protocol"   = "tcp"
+      "cidr_block" = "0.0.0.0/0"
     }
-  ]
+
 }
